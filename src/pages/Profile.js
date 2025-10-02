@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiEdit2, FiSave, FiX } from 'react-icons/fi';
+import { FiUser, FiMail, FiPhone, FiMapPin, FiEdit2, FiSave, FiX, FiLock } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Profile = () => {
-  const { user, updateProfile } = useAuth();
+  const { user, updateUserProfile } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    displayName: user?.displayName || '',
-    email: user?.email || '',
-    phone: user?.phoneNumber || '',
-    address: user?.address || ''
+    displayName: '',
+    phone: '',
+    address: ''
   });
+
+  // Update form data when user data changes
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        displayName: user?.displayName || '',
+        phone: user?.phone || '',
+        address: user?.address || ''
+      });
+    }
+  }, [user]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,21 +34,34 @@ const Profile = () => {
   };
 
   const handleSave = async () => {
+    // Validation
+    if (!formData.displayName.trim()) {
+      toast.error('Name cannot be empty');
+      return;
+    }
+
+    if (formData.phone && !/^[\d\s\-+()]+$/.test(formData.phone)) {
+      toast.error('Invalid phone number format');
+      return;
+    }
+
     try {
-      await updateProfile(formData);
+      setLoading(true);
+      await updateUserProfile(formData);
       setIsEditing(false);
       toast.success('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);
-      toast.error('Failed to update profile');
+      toast.error(error.message || 'Failed to update profile');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleCancel = () => {
     setFormData({
       displayName: user?.displayName || '',
-      email: user?.email || '',
-      phone: user?.phoneNumber || '',
+      phone: user?.phone || '',
       address: user?.address || ''
     });
     setIsEditing(false);
@@ -69,14 +94,16 @@ const Profile = () => {
               <div className="flex gap-2">
                 <button
                   onClick={handleSave}
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+                  disabled={loading}
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FiSave className="w-4 h-4" />
-                  Save
+                  {loading ? 'Saving...' : 'Save'}
                 </button>
                 <button
                   onClick={handleCancel}
-                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2"
+                  disabled={loading}
+                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FiX className="w-4 h-4" />
                   Cancel
@@ -105,6 +132,7 @@ const Profile = () => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your full name"
+                  required
                 />
               ) : (
                 <div className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">
@@ -142,7 +170,7 @@ const Profile = () => {
                 />
               ) : (
                 <div className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">
-                  {user?.phoneNumber || 'Not provided'}
+                  {user?.phone || 'Not provided'}
                 </div>
               )}
             </div>
@@ -167,6 +195,28 @@ const Profile = () => {
                   {user?.address || 'Not provided'}
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Security Section */}
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Security</h3>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+              <div className="flex items-start gap-3">
+                <FiLock className="w-5 h-5 text-blue-600 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-gray-800 mb-1">Password Management</h4>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Keep your account secure by using a strong password.
+                  </p>
+                  <Link
+                    to="/forgot-password"
+                    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    Reset Password
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
