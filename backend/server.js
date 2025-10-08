@@ -5,6 +5,8 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const paymentRoutes = require('./routes/payment');
+const productsRoutes = require('./routes/products');
+const ordersRoutes = require('./routes/orders');
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/payment', paymentRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/orders', ordersRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
