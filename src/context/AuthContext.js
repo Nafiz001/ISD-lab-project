@@ -130,37 +130,6 @@ export const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  const updateUserProfile = async (profileData) => {
-    try {
-      const currentUser = auth.currentUser;
-      if (!currentUser) {
-        throw new Error('No user logged in');
-      }
-
-      // Update display name in Firebase Auth
-      if (profileData.displayName) {
-        await updateProfile(currentUser, {
-          displayName: profileData.displayName
-        });
-      }
-
-      // Update user document in Firestore
-      await setDoc(doc(db, 'users', currentUser.uid), {
-        ...profileData,
-        updatedAt: new Date()
-      }, { merge: true });
-
-      // Update local user state
-      const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
-      const userData = userDoc.exists() ? userDoc.data() : {};
-      setUser({ ...currentUser, ...userData, isAdmin: ADMIN_EMAILS.includes(currentUser.email) });
-
-      return true;
-    } catch (error) {
-      throw error;
-    }
-  };
-
   const logout = () => {
     return signOut(auth);
   };
@@ -171,7 +140,6 @@ export const AuthProvider = ({ children }) => {
     login,
     signInWithGoogle,
     resetPassword,
-    updateUserProfile,
     logout,
     loading
   };

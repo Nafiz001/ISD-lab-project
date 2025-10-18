@@ -24,12 +24,39 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState([]);
   const [slidesLoading, setSlidesLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
   const { products: flashSales, loading: flashLoading } = useProducts({ limit: 8, orderBy: 'createdAt' });
   const { products: bestSelling, loading: bestLoading } = useProducts({ limit: 4, orderBy: 'sales' });
 
   // Fetch carousel slides from Firestore
   useEffect(() => {
     const fetchSlides = async () => {
+      // Default slides as fallback
+      const defaultSlides = [
+        {
+          id: 1,
+          title: "iPhone 14 Series",
+          subtitle: "Up to 10% off Voucher",
+          image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
+          link: "/products"
+        },
+        {
+          id: 2,
+          title: "Summer Collection",
+          subtitle: "50% off on selected items",
+          image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
+          link: "/products"
+        },
+        {
+          id: 3,
+          title: "Gaming Accessories",
+          subtitle: "Level up your game",
+          image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
+          link: "/category/gaming"
+        }
+      ];
+
       try {
         setSlidesLoading(true);
         const slidesQuery = query(
@@ -61,33 +88,59 @@ const Home = () => {
     fetchSlides();
   }, []);
 
-  // Default slides as fallback
-  const defaultSlides = [
-    {
-      id: 1,
-      title: "iPhone 14 Series",
-      subtitle: "Up to 10% off Voucher",
-      image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
-      link: "/products"
-    },
-    {
-      id: 2,
-      title: "Summer Collection",
-      subtitle: "50% off on selected items",
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
-      link: "/products"
-    },
-    {
-      id: 3,
-      title: "Gaming Accessories",
-      subtitle: "Level up your game",
-      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
-      link: "/category/gaming"
-    }
-  ];
+  // Fetch categories from Firestore
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        setCategoriesLoading(true);
+        const querySnapshot = await getDocs(collection(db, 'categories'));
+        const categoriesData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        // Sort by order if available
+        categoriesData.sort((a, b) => (a.order || 0) - (b.order || 0));
+        
+        // Map to the format expected by the UI
+        const formattedCategories = categoriesData.map(category => ({
+          name: category.name,
+          icon: category.icon || getDefaultCategoryIcon(category.slug),
+          link: `/category/${category.slug}`
+        }));
+        
+        setCategories(formattedCategories);
+        
+        // If no categories exist, use default categories
+        if (formattedCategories.length === 0) {
+          setCategories(getDefaultCategories());
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        // Fallback to default categories if Firebase fetch fails
+        setCategories(getDefaultCategories());
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
 
-  // Categories data
-  const categories = [
+    fetchCategories();
+  }, []);
+
+  // Function to get default category icon based on slug
+  const getDefaultCategoryIcon = (slug) => {
+    const iconMap = {
+      'mobile-phones': mobileIcon,
+      'computer-accessories': computerIcon,
+      'smart-devices': smartwatchIcon,
+      'photography': cameraIcon,
+      'audio-sound': headphonesIcon,
+      'gaming': gamingIcon
+    };
+    return iconMap[slug] || computerIcon; // fallback to computer icon
+  };
+
+  // Fallback default categories
+  const getDefaultCategories = () => [
     { name: "Computer Accessories", icon: computerIcon, link: "/category/computer-accessories" },
     { name: "Audio & Sound", icon: headphonesIcon, link: "/category/audio-sound" },
     { name: "Smart Devices", icon: smartwatchIcon, link: "/category/smart-devices" },
@@ -127,23 +180,29 @@ const Home = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="font-semibold mb-4">Browse By Category</h3>
-              <ul className="space-y-3">
-                {categories.map((category, index) => (
-                  <li key={index}>
-                    <Link
-                      to={category.link}
-                      className="flex items-center space-x-3 text-gray-700 hover:text-red-500 transition-colors"
-                    >
-                      <img 
-                        src={category.icon} 
-                        alt={category.name}
-                        className="w-6 h-6 object-contain"
-                      />
-                      <span>{category.name}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {categoriesLoading ? (
+                <div className="flex justify-center py-4">
+                  <LoadingSpinner />
+                </div>
+              ) : (
+                <ul className="space-y-3">
+                  {categories.map((category, index) => (
+                    <li key={index}>
+                      <Link
+                        to={category.link}
+                        className="flex items-center space-x-3 text-gray-700 hover:text-red-500 transition-colors"
+                      >
+                        <img 
+                          src={category.icon} 
+                          alt={category.name}
+                          className="w-6 h-6 object-contain"
+                        />
+                        <span>{category.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 
@@ -258,26 +317,32 @@ const Home = () => {
           <h2 className="text-3xl font-bold">Browse By Category</h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((category, index) => (
-            <Link
-              key={index}
-              to={category.link}
-              className="group p-6 border-2 border-gray-200 rounded-lg text-center hover:border-red-500 hover:bg-red-500 transition-all duration-300"
-            >
-              <div className="flex justify-center mb-4">
-                <img 
-                  src={category.icon} 
-                  alt={category.name}
-                  className="w-14 h-14 object-contain group-hover:filter group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                />
-              </div>
-              <span className="font-medium group-hover:text-white transition-colors">
-                {category.name}
-              </span>
-            </Link>
-          ))}
-        </div>
+        {categoriesLoading ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                to={category.link}
+                className="group p-6 border-2 border-gray-200 rounded-lg text-center hover:border-red-500 hover:bg-red-500 transition-all duration-300"
+              >
+                <div className="flex justify-center mb-4">
+                  <img 
+                    src={category.icon} 
+                    alt={category.name}
+                    className="w-14 h-14 object-contain group-hover:filter group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                  />
+                </div>
+                <span className="font-medium group-hover:text-white transition-colors">
+                  {category.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Best Selling Products */}

@@ -4,12 +4,14 @@ import { Navigate } from 'react-router-dom';
 import { collection, getDocs, deleteDoc, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../utils/firebase';
-import { FiPlus, FiEdit, FiTrash2, FiPackage, FiUsers, FiBarChart2, FiImage, FiShoppingBag, FiFileText } from 'react-icons/fi';
+import { FiPlus, FiEdit, FiTrash2, FiPackage, FiUsers, FiBarChart2, FiImage, FiShoppingBag, FiFileText, FiTag } from 'react-icons/fi';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AddProductModal from '../components/AddProductModal';
 import EditProductModal from '../components/EditProductModal';
 import AddSlideModal from '../components/AddSlideModal';
 import EditSlideModal from '../components/EditSlideModal';
+import AddCategoryModal from '../components/AddCategoryModal';
+import EditCategoryModal from '../components/EditCategoryModal';
 import AboutAdmin from '../admin/AboutAdmin';
 import toast from 'react-hot-toast';
 
@@ -27,6 +29,9 @@ const AdminPanel = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [showAddSlideModal, setShowAddSlideModal] = useState(false);
   const [editingSlide, setEditingSlide] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
+  const [editingCategory, setEditingCategory] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -78,6 +83,14 @@ const AdminPanel = () => {
       });
       // Sort orders by creation date (newest first)
       setOrders(ordersData.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()));
+
+      // Fetch categories
+      const categoriesSnapshot = await getDocs(collection(db, 'categories'));
+      const categoriesData = categoriesSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setCategories(categoriesData.sort((a, b) => (a.order || 0) - (b.order || 0)));
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -149,6 +162,45 @@ const AdminPanel = () => {
     }
   };
 
+  // Category management functions
+  const handleDeleteCategory = async (categoryId) => {
+    try {
+      await deleteDoc(doc(db, 'categories', categoryId));
+      toast.success('Category deleted successfully!');
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting category:', error);
+      toast.error('Failed to delete category');
+    }
+  };
+
+  const handleAddCategory = async (categoryData) => {
+    try {
+      await addDoc(collection(db, 'categories'), {
+        ...categoryData,
+        createdAt: new Date()
+      });
+      toast.success('Category added successfully!');
+      fetchData();
+      setShowAddCategoryModal(false);
+    } catch (error) {
+      console.error('Error adding category:', error);
+      toast.error('Failed to add category');
+    }
+  };
+
+  const handleEditCategory = async (categoryId, categoryData) => {
+    try {
+      await updateDoc(doc(db, 'categories', categoryId), categoryData);
+      toast.success('Category updated successfully!');
+      fetchData();
+      setEditingCategory(null);
+    } catch (error) {
+      console.error('Error updating category:', error);
+      toast.error('Failed to update category');
+    }
+  };
+
   // Order management functions
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
     try {
@@ -215,6 +267,18 @@ const AdminPanel = () => {
               <FiShoppingBag className="inline mr-1 sm:mr-2" />
               <span className="hidden sm:inline">Orders</span>
               <span className="sm:hidden">Orders</span> ({orders.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('categories')}
+              className={`py-2 px-3 sm:px-4 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap flex-shrink-0 ${
+                activeTab === 'categories'
+                  ? 'border-red-500 text-red-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              <FiTag className="inline mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Categories</span>
+              <span className="sm:hidden">Categories</span> ({categories.length})
             </button>
             <button
               onClick={() => setActiveTab('carousel')}
@@ -598,6 +662,104 @@ const AdminPanel = () => {
           </div>
         )}
 
+        {/* Categories Tab */}
+        {activeTab === 'categories' && (
+          <div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 space-y-2 sm:space-y-0">
+              <h2 className="text-lg sm:text-xl font-semibold">Categories Management</h2>
+              <button
+                onClick={() => setShowAddCategoryModal(true)}
+                className="bg-red-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center text-sm sm:text-base"
+              >
+                <FiPlus className="mr-1 sm:mr-2" />
+                Add Category
+              </button>
+            </div>
+            
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Category
+                      </th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
+                        Slug
+                      </th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                        Description
+                      </th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                        Order
+                      </th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {categories.map((category) => (
+                      <tr key={category.id}>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            {category.icon && (
+                              <img
+                                src={category.icon}
+                                alt={category.name}
+                                className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg object-cover flex-shrink-0 mr-2 sm:mr-4"
+                              />
+                            )}
+                            <div className="min-w-0">
+                              <div className="text-xs sm:text-sm font-medium text-gray-900 truncate">{category.name}</div>
+                              <div className="text-xs text-gray-500 truncate sm:hidden">{category.slug}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden sm:table-cell">
+                          {category.slug}
+                        </td>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500 hidden md:table-cell">
+                          <div className="max-w-xs truncate">
+                            {category.description || 'No description'}
+                          </div>
+                        </td>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden lg:table-cell">
+                          {category.order || 0}
+                        </td>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => setEditingCategory(category)}
+                              className="text-indigo-600 hover:text-indigo-900 p-1"
+                              title="Edit Category"
+                            >
+                              <FiEdit className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteCategory(category.id)}
+                              className="text-red-600 hover:text-red-900 p-1"
+                              title="Delete Category"
+                            >
+                              <FiTrash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              
+              {categories.length === 0 && (
+                <div className="text-center py-8 text-gray-500">
+                  No categories found. Create your first category to get started.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Carousel Tab */}
         {activeTab === 'carousel' && (
           <div>
@@ -740,6 +902,25 @@ const AdminPanel = () => {
           onClose={() => setEditingSlide(null)}
           onSlideUpdated={handleEditSlide}
           products={products}
+        />
+      )}
+
+      {/* Add Category Modal */}
+      {showAddCategoryModal && (
+        <AddCategoryModal
+          isOpen={showAddCategoryModal}
+          onClose={() => setShowAddCategoryModal(false)}
+          onAdd={handleAddCategory}
+        />
+      )}
+
+      {/* Edit Category Modal */}
+      {editingCategory && (
+        <EditCategoryModal
+          isOpen={!!editingCategory}
+          category={editingCategory}
+          onClose={() => setEditingCategory(null)}
+          onEdit={handleEditCategory}
         />
       )}
     </div>
