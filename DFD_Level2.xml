@@ -1,0 +1,423 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Level 2 DFD" id="level2">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <mxCell id="title" value="E-Commerce System - Level 2 DFD (Checkout and Payment Processing)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- External Entities -->
+        <mxCell id="customer" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="payment-gateway" value="UddoktaPay&#xa;Payment Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1580" y="450" width="140" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="admin" value="Admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="1000" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Level 2 Sub-processes for Checkout (5.0) -->
+        <mxCell id="process5-1" value="5.1&#xa;Validate Cart&#xa;&amp; Items" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process5-2" value="5.2&#xa;Collect Shipping&#xa;Information" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process5-3" value="5.3&#xa;Calculate&#xa;Total Amount" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process5-4" value="5.4&#xa;Select Payment&#xa;Method" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process5-5" value="5.5&#xa;Create Order&#xa;Record" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Level 2 Sub-processes for Payment (6.0) -->
+        <mxCell id="process6-1" value="6.1&#xa;Initiate Payment&#xa;Request" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process6-2" value="6.2&#xa;Process Payment&#xa;Gateway API" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process6-3" value="6.3&#xa;Handle Payment&#xa;Redirect" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process6-4" value="6.4&#xa;Verify Payment&#xa;Webhook" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1040" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process6-5" value="6.5&#xa;Update Payment&#xa;Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Level 2 Sub-processes for Order Management (7.0) -->
+        <mxCell id="process7-1" value="7.1&#xa;Save Order&#xa;to Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="640" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process7-2" value="7.2&#xa;Update Order&#xa;Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="640" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process7-3" value="7.3&#xa;Send Order&#xa;Confirmation" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="640" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process7-4" value="7.4&#xa;Generate Invoice&#xa;&amp; Receipt" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1040" y="640" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process7-5" value="7.5&#xa;Clear Shopping&#xa;Cart" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="640" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Additional Processes -->
+        <mxCell id="process-error" value="6.6&#xa;Handle Payment&#xa;Failure/Cancel" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1520" y="380" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process-cod" value="5.6&#xa;Process Cash&#xa;on Delivery" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1520" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process-admin" value="7.6&#xa;Admin Order&#xa;Management" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="900" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process-track" value="8.1&#xa;Track Order&#xa;Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="900" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="process-notify" value="7.7&#xa;Send Status&#xa;Notifications" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="900" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Data Stores -->
+        <mxCell id="ds-cart" value="D5: Cart Storage (LocalStorage)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="320" y="1150" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds-products" value="D2: Products Collection (Firestore)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="640" y="1150" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds-orders" value="D3: Orders Collection (Firestore)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="960" y="1150" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds-users" value="D4: Users Collection (Firestore)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1150" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds-payment" value="D9: Payment Logs (Backend Memory/DB)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="320" y="1220" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds-webhook" value="D10: Webhook Logs (Backend Memory)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="640" y="1220" width="280" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Customer Flows -->
+        <mxCell id="cf1" value="Proceed to Checkout" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="process5-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf2" value="Shipping Info" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="process5-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf3" value="Payment Method Selection" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="process5-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf4" value="Payment URL" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-3" target="customer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf5" value="Order Confirmation" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-3" target="customer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf6" value="Invoice/Receipt" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-4" target="customer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf7" value="Track Request" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="process-track">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cf8" value="Order Status" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="process-track" target="customer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Admin Flows -->
+        <mxCell id="af1" value="Manage Orders" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="process-admin">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1100" as="sourcePoint"/>
+            <mxPoint x="950" y="1050" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="af2" value="Order Reports" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="process-admin" target="admin">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1100" as="sourcePoint"/>
+            <mxPoint x="950" y="1050" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Checkout Flow (5.x) -->
+        <mxCell id="p51-52" value="Valid Cart Data" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-1" target="process5-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p52-53" value="Shipping Details" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-2" target="process5-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p53-54" value="Total Amount" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-3" target="process5-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p54-55" value="Payment Method" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-4" target="process5-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p54-cod" value="COD Selected" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="process5-4" target="process-cod">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p55-61" value="Order Details" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-5" target="process6-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Payment Flow (6.x) -->
+        <mxCell id="p61-62" value="Payment Data" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-1" target="process6-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p62-pg" value="API Request" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-2" target="payment-gateway">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1300" y="600" as="sourcePoint"/>
+            <mxPoint x="1350" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="pg-62" value="Payment URL" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="payment-gateway" target="process6-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1300" y="600" as="sourcePoint"/>
+            <mxPoint x="1350" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p62-63" value="Redirect URL" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-2" target="process6-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="pg-64" value="Webhook Callback" style="endArrow=classic;html=1;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="payment-gateway" target="process6-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1300" y="600" as="sourcePoint"/>
+            <mxPoint x="1350" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p64-65" value="Verified Payment" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-4" target="process6-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p63-err" value="Payment Failed" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="process6-3" target="process-error">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p65-71" value="Payment Success" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-5" target="process7-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="600" as="sourcePoint"/>
+            <mxPoint x="950" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Order Management Flow (7.x) -->
+        <mxCell id="p71-72" value="Order Saved" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-1" target="process7-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="800" as="sourcePoint"/>
+            <mxPoint x="950" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p72-73" value="Status Updated" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-2" target="process7-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="800" as="sourcePoint"/>
+            <mxPoint x="950" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p73-74" value="Confirmed Order" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-3" target="process7-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="800" as="sourcePoint"/>
+            <mxPoint x="950" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p74-75" value="Invoice Generated" style="endArrow=classic;html=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-4" target="process7-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="800" as="sourcePoint"/>
+            <mxPoint x="950" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p72-notify" value="Order Update" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-2" target="process-notify">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="800" as="sourcePoint"/>
+            <mxPoint x="950" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="cod-71" value="COD Order" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="process-cod" target="process7-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="400" as="sourcePoint"/>
+            <mxPoint x="950" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Data Store Flows -->
+        <mxCell id="ds51-cart" value="Read Cart" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-1" target="ds-cart">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds51-prod" value="Validate Products" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-1" target="ds-products">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds55-users" value="Read User Data" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process5-5" target="ds-users">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds61-pay" value="Store Payment Request" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-1" target="ds-payment">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds64-web" value="Store Webhook" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process6-4" target="ds-webhook">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds71-ord" value="Create Order" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-1" target="ds-orders">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds72-ord" value="Update Status" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-2" target="ds-orders">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds75-cart" value="Clear Cart" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process7-5" target="ds-cart">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds-admin-ord" value="Order CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process-admin" target="ds-orders">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ds-track-ord" value="Read Order" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process-track" target="ds-orders">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="1000" as="sourcePoint"/>
+            <mxPoint x="950" y="950" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

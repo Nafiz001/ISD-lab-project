@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="E-Commerce Gantt Chart" id="gantt-chart">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="2" value="E-Commerce Project Gantt Chart (3 Members)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Timeline Axis -->
+        <mxCell id="3" value="Timeline (Weeks)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="Sprint 1 (Oct 1-5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="Sprint 2 (Oct 2-9)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="460" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="Sprint 3 (Oct 4-11)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="Sprint 4 (Oct 5-12)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="740" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="Sprint 5 (Oct 5-15)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="880" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="Sprint 6 (Oct 8-15)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="Sprint 7 (Oct 8-15)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="80" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Member Rows -->
+        <mxCell id="100" value="Frontend Lead" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="101" value="Backend Lead" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="102" value="Fullstack/QA Lead" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="230" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Frontend Lead Tasks -->
+        <mxCell id="20" value="Allow users to register and log in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="21" value="Display product listings and details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="22" value="Add/remove products to/from cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="600" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="23" value="Manage carousel slides and featured products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="740" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="24" value="Update order status (admin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="880" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="25" value="Add/remove products to/from wishlist" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="26" value="Design responsive layout for all devices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="130" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Backend Lead Tasks -->
+        <mxCell id="30" value="Enable password reset functionality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="31" value="Show product categories" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="460" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="32" value="Complete checkout process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="33" value="Allow admin to add/edit/delete products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="740" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="34" value="Place and track orders" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="880" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="35" value="Integrate payment gateway (bKash)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="36" value="Monitor and maintain production environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Fullstack/QA Lead Tasks -->
+        <mxCell id="40" value="Provide user profile management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="41" value="Implement product search and filtering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="42" value="View and update cart contents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="43" value="View and manage user accounts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="740" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="44" value="View order history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="880" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="45" value="View wishlist items" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="46" value="Implement navigation bar, footer, and search bar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="230" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="47" value="Create RESTful API endpoints for all features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="48" value="Secure API with authentication and authorization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="260" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="49" value="Set up CI/CD pipeline for automated deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="260" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="50" value="Monitor and maintain production environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="740" y="260" width="140" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
