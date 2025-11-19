@@ -1,93 +1,196 @@
-# Secure Authentication System
+# 🛍️ ShopCircuit - E-Commerce Platform
 
-A comprehensive, production-ready authentication system built with React, Firebase, and modern security best practices.
+A modern, full-featured e-commerce web application built with React.js, Firebase, and Express.js. ShopCircuit provides a seamless online shopping experience with real-time inventory management, secure payment processing, and an intuitive admin panel.
 
-## 🔐 Security Features
+## 🌐 Live Demo
 
-### ✅ Implemented Security Measures
+**🔗 [Visit ShopCircuit Live](https://shopcircuit.vercel.app/)**
 
-1. **Secure User Registration**
-   - Email/password authentication with Firebase
-   - Password strength validation (minimum 6 characters)
-   - Email format validation
-   - Duplicate account prevention
-   - Google OAuth integration
+## 📸 Screenshots
 
-2. **Secure Login System**
-   - Email/password authentication
-   - Password visibility toggle
-   - Session management with Firebase
-   - Admin authentication with role-based access
-   - Google Sign-In support
-   - Error handling with user-friendly messages
+![ShopCircuit Homepage](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=ShopCircuit+Homepage)
+*Modern homepage with featured products and carousel*
 
-3. **Password Reset Functionality**
-   - Secure password reset via email
-   - Email verification before reset
-   - Rate limiting protection
-   - Reset link expiration
-   - User-friendly success/error feedback
+## 📋 Project Overview
 
-4. **Profile Management**
-   - Secure profile updates
-   - Input validation and sanitization
-   - Real-time data sync with Firestore
-   - Display name, phone, and address management
-   - Account creation and last sign-in timestamps
-   - Password reset link from profile
+ShopCircuit is a comprehensive e-commerce solution designed to provide both customers and administrators with a powerful, user-friendly platform. The application features real-time product management, secure authentication, payment gateway integration (UddoktaPay for bKash/Nagad), and complete order tracking functionality.
 
-5. **Additional Security Features**
-   - Firebase security rules
-   - Protected routes
-   - Session persistence
-   - Automatic token refresh
-   - XSS protection through React
-   - CSRF protection via Firebase
-   - Secure HTTP-only cookies (Firebase handles this)
+### Key Highlights:
+- 🛒 Full-featured shopping cart with persistent storage
+- 💳 Multiple payment methods (bKash, Nagad, Cash on Delivery)
+- 👤 User authentication with role-based access control
+- 📦 Real-time order tracking and management
+- 🎨 Responsive design with Tailwind CSS
+- 🔥 Firebase backend for real-time data synchronization
+- 🔐 Secure payment processing with webhook integration
 
-## 📁 Project Structure
+## 🚀 Main Features
 
+### For Customers:
+- **Product Browsing & Search**
+  - Advanced search with filters (category, price range, rating)
+  - Product categories with dynamic filtering
+  - Detailed product pages with image galleries
+  - Product ratings and reviews
+
+- **Shopping Cart**
+  - Add/remove items with quantity management
+  - Real-time price calculations
+  - Persistent cart across sessions (localStorage)
+  - Cart summary with itemized totals
+
+- **Wishlist**
+  - Save favorite products for later
+  - User-specific wishlist management
+  - Quick add-to-cart from wishlist
+
+- **Checkout & Payment**
+  - Multi-step checkout process
+  - Customer information validation
+  - Multiple payment options (bKash, Nagad, COD)
+  - Secure payment gateway integration
+  - Order confirmation and tracking
+
+- **User Profile**
+  - Profile management and settings
+  - Order history with status tracking
+  - Saved addresses and contact information
+  - Password reset functionality
+
+### For Administrators:
+- **Admin Dashboard**
+  - Comprehensive product management (CRUD operations)
+  - Category management with icon uploads
+  - Carousel slide management for homepage
+  - Order management with status updates
+  - Real-time analytics and monitoring
+
+- **Product Management**
+  - Add/edit/delete products
+  - Image upload to Firebase Storage
+  - Stock management and pricing
+  - Bulk product operations
+
+- **Order Management**
+  - View all orders with filtering
+  - Update order status
+  - Payment verification
+  - Order details and customer information
+
+## 🛠️ Technology Stack
+
+### Frontend:
+- **React.js 18** - UI framework with hooks and context API
+- **React Router DOM** - Client-side routing
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Icons** - Icon library (Feather Icons, React Icons)
+- **React Hot Toast** - Toast notifications
+
+### Backend:
+- **Node.js** - Runtime environment
+- **Express.js** - Web application framework
+- **Firebase Admin SDK** - Server-side Firebase operations
+
+### Database & Storage:
+- **Firebase Firestore** - NoSQL cloud database
+- **Firebase Storage** - File storage for images
+- **Firebase Authentication** - User authentication
+- **LocalStorage** - Client-side cart/wishlist persistence
+
+### Payment Integration:
+- **UddoktaPay API** - Payment gateway (bKash, Nagad)
+- **Webhook System** - Payment status notifications
+
+### DevOps & Deployment:
+- **Vercel** - Frontend hosting and deployment
+- **Git** - Version control
+- **npm** - Package management
+
+
+## 📦 Dependencies
+
+### Frontend Dependencies:
+```json
+{
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-router-dom": "^6.28.0",
+  "react-hot-toast": "^2.4.1",
+  "react-icons": "^5.3.0",
+  "firebase": "^11.0.2"
+}
 ```
-src/
-├── config/
-│   └── firebase.js              # Firebase configuration and admin credentials
-├── context/
-│   └── AuthContext.js           # Authentication context and hooks
-├── pages/
-│   ├── Login.js                 # Login page with email/password and Google auth
-│   ├── SignUp.js                # User registration page
-│   ├── ForgotPassword.js        # Password reset page
-│   └── Profile.js               # User profile management
-└── utils/
-    └── firebase.js              # Firebase initialization
+
+### Backend Dependencies:
+```json
+{
+  "express": "^4.21.1",
+  "cors": "^2.8.5",
+  "dotenv": "^16.4.5",
+  "axios": "^1.7.7",
+  "firebase-admin": "^13.0.1",
+  "helmet": "^8.0.0",
+  "morgan": "^1.10.0"
+}
 ```
 
-## 🚀 Getting Started
+### Dev Dependencies:
+```json
+{
+  "tailwindcss": "^3.4.14",
+  "postcss": "^8.4.47",
+  "autoprefixer": "^10.4.20",
+  "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+}
+```
+
+## 🚀 Getting Started - Local Setup
 
 ### Prerequisites
+- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
+- **npm** or **yarn** package manager
+- **Firebase Account** - [Create account](https://firebase.google.com/)
+- **Git** - [Download here](https://git-scm.com/)
 
-- Node.js (v14 or higher)
-- npm or yarn
-- Firebase account
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/Nafiz001/ISD-lab-project.git
+cd ISD-lab-project
+```
 
-### Installation
+### Step 2: Install Frontend Dependencies
+```bash
+npm install
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Nafiz001/ISD-lab-project.git
-   cd ISD-lab-project
-   ```
+### Step 3: Install Backend Dependencies
+```bash
+cd backend
+npm install
+cd ..
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+### Step 4: Firebase Configuration
 
-3. **Configure Firebase**
+1. **Create a Firebase Project**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Click "Add project" and follow the setup wizard
+   - Enable Google Analytics (optional)
+
+2. **Enable Firebase Services**
+   - **Authentication**: Enable Email/Password and Google Sign-In
+   - **Firestore Database**: Create database in production mode
+   - **Storage**: Enable Firebase Storage for image uploads
+
+3. **Get Firebase Config**
+   - Go to Project Settings > General
+   - Scroll down to "Your apps" section
+   - Click on Web app (</>) icon
+   - Copy the Firebase configuration object
+
+4. **Update Firebase Configuration**
    
-   Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-   
-   Update `src/config/firebase.js` with your Firebase credentials:
+   Edit `src/config/firebase.js`:
    ```javascript
    const firebaseConfig = {
      apiKey: "YOUR_API_KEY",
@@ -99,238 +202,347 @@ src/
    };
    ```
 
-4. **Set up Firebase Authentication**
-   - Enable Email/Password authentication in Firebase Console
-   - Enable Google Sign-In provider
-   - Configure authorized domains
-
-5. **Set up Firestore Database**
-   - Create a Firestore database
-   - Apply security rules from `firestore.rules`
-
-6. **Configure Admin Accounts (Optional)**
+5. **Set Admin Emails**
    
    Update admin credentials in `src/config/firebase.js`:
    ```javascript
    export const ADMIN_EMAILS = [
-     'admin@yourdomain.com',
-   ];
-   
-   export const ADMIN_CREDENTIALS = [
-     { email: 'admin@yourdomain.com', password: 'secure_admin_password' },
+     'admin@shopcircuit.com',
+     'youremail@example.com'  // Add your admin email here
    ];
    ```
 
-7. **Run the application**
-   ```bash
-   npm start
-   ```
+### Step 5: Set Up Firestore Security Rules
 
-## 🔧 Configuration
+Copy the rules from `firestore.rules` and apply them in Firebase Console:
+- Go to Firestore Database > Rules
+- Paste the security rules
+- Click "Publish"
 
-### Environment Variables (Recommended)
+### Step 6: Configure Backend Environment Variables
 
-For production, use environment variables instead of hardcoding credentials:
+Create a `.env` file in the `backend` directory:
+```env
+PORT=5000
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_PRIVATE_KEY="your_private_key"
+FIREBASE_CLIENT_EMAIL=your_client_email
 
-1. Create a `.env` file in the root directory:
-   ```
-   REACT_APP_FIREBASE_API_KEY=your_api_key
-   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   REACT_APP_FIREBASE_APP_ID=your_app_id
-   ```
-
-2. Update `src/config/firebase.js`:
-   ```javascript
-   const firebaseConfig = {
-     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-     appId: process.env.REACT_APP_FIREBASE_APP_ID
-   };
-   ```
-
-### Firestore Security Rules
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Users collection
-    match /users/{userId} {
-      // Allow users to read their own data
-      allow read: if request.auth != null && request.auth.uid == userId;
-      
-      // Allow users to create their own document during signup
-      allow create: if request.auth != null && request.auth.uid == userId;
-      
-      // Allow users to update their own data
-      allow update: if request.auth != null && request.auth.uid == userId;
-      
-      // Admins can read all users
-      allow read: if request.auth != null && 
-                     get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
-    }
-  }
-}
+# UddoktaPay Configuration (for payment gateway)
+UDDOKTAPAY_API_KEY=your_uddoktapay_api_key
+UDDOKTAPAY_BASE_URL=https://sandbox.uddoktapay.com/api
 ```
 
-## 📱 Features
+### Step 7: Run the Application
 
-### User Registration
-- Email and password registration
-- Google OAuth registration
-- Automatic profile creation in Firestore
-- Display name setup during registration
-- Email verification (optional)
+#### Start Frontend Development Server:
+```bash
+npm start
+```
+The app will open at `http://localhost:3000`
 
-### User Login
-- Email/password login
-- Google Sign-In
-- Remember me functionality
-- Password visibility toggle
-- Admin role detection
+#### Start Backend Server (in a new terminal):
+```bash
+cd backend
+npm start
+```
+The server will run at `http://localhost:5000`
 
-### Password Reset
-- Email-based password reset
-- Secure reset link generation
-- Email verification
-- Success confirmation page
+### Step 8: Populate Sample Data (Optional)
 
-### Profile Management
-- View account information
-- Edit profile details (name, phone, address)
-- View account creation date
-- View last sign-in date
-- Password reset access
-- Form validation
+Run these scripts to add initial data:
 
-## 🛡️ Security Best Practices
+```bash
+# Add sample products
+node src/utils/populateDatabase.js
 
-1. **Never commit sensitive credentials**
-   - Use `.env` files for configuration
-   - Add `.env` to `.gitignore`
-   - Use different configs for dev/prod
+# Add carousel slides
+node populateCarouselSlides.js
+```
 
-2. **Implement strong password policies**
-   - Minimum 6 characters (consider increasing to 8+)
-   - Consider password complexity requirements
-   - Implement password strength meter
+## 📖 Usage Guide
 
-3. **Enable Firebase Security Features**
-   - Set up Firestore security rules
-   - Enable App Check for abuse prevention
-   - Monitor authentication events
+### Customer Workflow:
+1. **Browse Products** - Navigate to Products page or browse by category
+2. **View Product Details** - Click on any product for detailed information
+3. **Add to Cart** - Select quantity and add items to cart
+4. **Checkout** - Fill in customer information and select payment method
+5. **Complete Payment** - For online payment, you'll be redirected to payment gateway
+6. **Track Order** - View order status in Orders page after login
 
-4. **Use HTTPS in production**
-   - Ensure all communication is encrypted
-   - Configure proper CORS settings
-   - Use secure cookies
+### Admin Workflow:
+1. **Login as Admin** - Use admin email credentials
+2. **Access Admin Panel** - Navigate to `/admin` route
+3. **Manage Products** - Add, edit, or delete products with images
+4. **Manage Categories** - Add category names and icons
+5. **Manage Orders** - Update order status and view payment details
+6. **Update Carousel** - Add/edit homepage carousel slides
 
-5. **Regular Security Updates**
-   - Keep dependencies updated
-   - Monitor security advisories
-   - Regular security audits
+## 🔗 Important Links
+
+- **Live Application**: [https://shopcircuit.vercel.app/](https://shopcircuit.vercel.app/)
+- **GitHub Repository**: [https://github.com/Nafiz001/ISD-lab-project](https://github.com/Nafiz001/ISD-lab-project)
+- **Project Documentation**: [DiagramToCodeMapping.md](./DiagramToCodeMapping.md)
+- **API Documentation**: [API_DOCUMENTATION.md](./API_DOCUMENTATION.md)
+- **Payment Integration Guide**: [PAYMENT_INTEGRATION.md](./PAYMENT_INTEGRATION.md)
+- **Monitoring Guide**: [PRODUCTION_MONITORING.md](./PRODUCTION_MONITORING.md)
+
+## 📁 Project Structure
+
+```
+ISD-lab-project/
+├── public/
+│   ├── index.html
+│   └── bkash-logo-generator.html
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── Header.js
+│   │   ├── Footer.js
+│   │   ├── ProductCard.js
+│   │   ├── AddProductModal.js
+│   │   └── ...
+│   ├── pages/              # Route components
+│   │   ├── Home.js
+│   │   ├── Products.js
+│   │   ├── Cart.js
+│   │   ├── Checkout.js
+│   │   ├── AdminPanel.js
+│   │   └── ...
+│   ├── context/            # React Context providers
+│   │   ├── AuthContext.js
+│   │   ├── CartContext.js
+│   │   └── WishlistContext.js
+│   ├── hooks/              # Custom React hooks
+│   │   ├── useProducts.js
+│   │   └── useAdvancedSearch.js
+│   ├── config/             # Configuration files
+│   │   └── firebase.js
+│   ├── utils/              # Utility functions
+│   │   ├── firebase.js
+│   │   └── paymentService.js
+│   ├── assets/             # Static assets
+│   ├── App.js              # Main App component
+│   └── index.js            # Entry point
+├── backend/
+│   ├── routes/
+│   │   ├── payment.js
+│   │   ├── products.js
+│   │   └── orders.js
+│   ├── middleware/
+│   │   └── healthMonitoring.js
+│   └── server.js           # Express server
+├── firestore.rules         # Firestore security rules
+├── tailwind.config.js      # Tailwind configuration
+├── package.json
+└── README.md
+```
+
+
+## 🔒 Security Features
+
+- **Firebase Authentication** with email/password and Google OAuth
+- **Role-based Access Control** for admin functionality
+- **Firestore Security Rules** for data protection
+- **Input Validation** on both client and server side
+- **XSS Protection** through React's built-in sanitization
+- **Secure Payment Processing** with webhook verification
+- **Protected Routes** for authenticated users
+- **Session Management** with automatic token refresh
 
 ## 🧪 Testing
 
 ### Manual Testing Checklist
 
-- [ ] User can register with email/password
-- [ ] User can register with Google
-- [ ] User can login with email/password
-- [ ] User can login with Google
-- [ ] Password reset email is sent
-- [ ] Password reset link works
-- [ ] User can update profile information
-- [ ] Form validation works correctly
-- [ ] Error messages are user-friendly
-- [ ] Admin authentication works
-- [ ] Session persists on page refresh
+**Authentication:**
+- [x] User registration with email/password
+- [x] User login with email/password and Google OAuth
+- [x] Password reset functionality
+- [x] Profile management and updates
+- [x] Admin authentication and access control
 
-## 🚢 Deployment
+**Shopping Features:**
+- [x] Product browsing and filtering
+- [x] Advanced search functionality
+- [x] Add/remove items from cart
+- [x] Wishlist management
+- [x] Checkout process with multiple payment methods
 
-### Prerequisites for Deployment
-- Firebase Hosting or any static hosting service
-- Environment variables configured
-- Production Firebase project
+**Admin Features:**
+- [x] Product CRUD operations
+- [x] Category management
+- [x] Order management and status updates
+- [x] Carousel slide management
+- [x] Image uploads to Firebase Storage
 
-### Deployment Steps
+**Payment Integration:**
+- [x] bKash payment processing
+- [x] Nagad payment processing
+- [x] Cash on delivery
+- [x] Webhook notifications
+- [x] Order confirmation
+
+## 🚀 Deployment
+
+### Frontend Deployment (Vercel)
 
 1. **Build the project**
    ```bash
    npm run build
    ```
 
-2. **Deploy to Firebase Hosting**
+2. **Deploy to Vercel**
    ```bash
-   firebase login
-   firebase init hosting
-   firebase deploy
+   # Install Vercel CLI
+   npm install -g vercel
+   
+   # Deploy
+   vercel --prod
    ```
 
-3. **Or deploy to other platforms**
-   - Vercel: `vercel --prod`
-   - Netlify: `netlify deploy --prod`
-   - GitHub Pages: Configure in repository settings
+3. **Configure Environment Variables in Vercel Dashboard**
+   - Add all Firebase configuration variables
+   - Set production API URLs
 
-## 📚 Dependencies
+### Backend Deployment Options
 
-- **react**: UI framework
-- **react-router-dom**: Routing
-- **firebase**: Backend and authentication
-- **react-hot-toast**: Toast notifications
-- **react-icons**: Icon library
-- **tailwindcss**: Styling
+**Option 1: Vercel Serverless Functions**
+- Place backend routes in `/api` directory
+- Configure `vercel.json` for serverless functions
+
+**Option 2: Railway/Render**
+- Connect GitHub repository
+- Set environment variables
+- Deploy Node.js application
+
+**Option 3: Firebase Cloud Functions**
+- Convert Express routes to Cloud Functions
+- Deploy with Firebase CLI
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+**Firebase Connection Error:**
+```bash
+# Verify Firebase configuration in src/config/firebase.js
+# Check if all Firebase services are enabled in Console
+```
+
+**Cart Not Persisting:**
+```bash
+# Check browser localStorage
+# Clear cache and reload application
+```
+
+**Payment Gateway Issues:**
+```bash
+# Verify UddoktaPay API credentials in backend/.env
+# Check webhook URL configuration
+# Review payment logs in backend console
+```
+
+**Admin Access Denied:**
+```bash
+# Confirm email is added to ADMIN_EMAILS array in firebase.js
+# Re-login after adding email to admin list
+```
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions are welcome! Please follow these steps:
+
+1. **Fork the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/ISD-lab-project.git
+   ```
+
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+
+3. **Commit your changes**
+   ```bash
+   git commit -m 'Add some AmazingFeature'
+   ```
+
+4. **Push to the branch**
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+
+5. **Open a Pull Request**
+
+### Coding Standards:
+- Follow React best practices and hooks guidelines
+- Use Tailwind CSS for styling
+- Write clean, readable code with comments
+- Test thoroughly before submitting PR
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+## 👥 Team & Authors
 
-- **Nafiz** - [GitHub](https://github.com/Nafiz001)
+- **Nafiz** - Project Lead & Full Stack Developer
+  - GitHub: [@Nafiz001](https://github.com/Nafiz001)
+  - Email: nafiz@shopcircuit.com
 
 ## 🙏 Acknowledgments
 
-- Firebase team for excellent documentation
-- React community for best practices
-- Contributors and testers
+- Firebase team for comprehensive backend services
+- React.js community for excellent documentation
+- Tailwind CSS for utility-first CSS framework
+- UddoktaPay for payment gateway integration
+- Vercel for seamless deployment platform
 
-## 📞 Support
+## 📞 Support & Contact
 
-For support, email nafiz@shopcircuit.com or open an issue in the GitHub repository.
+- **Email**: nafiz@shopcircuit.com
+- **GitHub Issues**: [Report a bug](https://github.com/Nafiz001/ISD-lab-project/issues)
+- **Documentation**: [Project Docs](./DiagramToCodeMapping.md)
 
-## 🔄 Changelog
+## 🔄 Version History
 
-### Version 1.0.0 (Current)
-- ✅ Initial release with complete authentication system
-- ✅ Email/password authentication
-- ✅ Google OAuth integration
-- ✅ Password reset functionality
-- ✅ Profile management
-- ✅ Admin role support
-- ✅ Comprehensive security measures
+### Version 2.0.0 (Current - November 2025)
+- ✅ Complete e-commerce platform with payment integration
+- ✅ Admin panel with full product management
+- ✅ Shopping cart and wishlist functionality
+- ✅ Order tracking and management
+- ✅ UddoktaPay payment gateway integration
+- ✅ Real-time inventory management
+- ✅ Advanced search and filtering
+- ✅ Responsive design for all devices
 
-## 🗺️ Roadmap
+### Version 1.0.0 (Initial Release)
+- ✅ Basic authentication system
+- ✅ User profile management
+- ✅ Firebase integration
 
-- [ ] Email verification on signup
-- [ ] Two-factor authentication (2FA)
-- [ ] Social login (Facebook, Twitter)
-- [ ] Account deletion functionality
-- [ ] Password strength meter
-- [ ] Session timeout management
-- [ ] Login history tracking
-- [ ] Automated testing suite
+## 🗺️ Future Roadmap
+
+- [ ] Email notifications for order updates
+- [ ] Product reviews and ratings system
+- [ ] Multi-language support
+- [ ] Mobile app (React Native)
+- [ ] Advanced analytics dashboard
+- [ ] Inventory alerts for low stock
+- [ ] Customer support chat integration
+- [ ] Loyalty points and rewards program
+- [ ] Social media sharing functionality
+- [ ] Product recommendations based on browsing history
+
+## 📊 Project Statistics
+
+- **Total Components**: 30+
+- **Total Pages**: 15+
+- **Firebase Collections**: 6 (users, products, orders, categories, carouselSlides, reviews)
+- **API Endpoints**: 12+
+- **Lines of Code**: 10,000+
+
+---
+
+**Made with ❤️ by the ShopCircuit Team**
+
+**⭐ If you find this project useful, please consider giving it a star on GitHub!**

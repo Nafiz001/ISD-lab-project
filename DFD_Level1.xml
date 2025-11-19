@@ -6,7 +6,7 @@
         <mxCell id="1" parent="0"/>
         
         <!-- Title -->
-        <mxCell id="title" value="E-Commerce System - Level 1 DFD (Main Processes)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="title" value="E-Commerce System - Level 1 DFD (Main Processes) - Corrected" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="500" y="20" width="600" height="40" as="geometry"/>
         </mxCell>
         
@@ -85,24 +85,28 @@
           <mxGeometry x="880" y="930" width="250" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="ds4" value="D4: Users Collection" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+        <mxCell id="ds4" value="D4: Categories Collection" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
           <mxGeometry x="1160" y="930" width="250" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="ds5" value="D5: Cart Storage (LocalStorage)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+        <mxCell id="ds5" value="D5: Users Collection" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
           <mxGeometry x="320" y="1000" width="250" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="ds6" value="D6: Wishlist Storage (LocalStorage)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+        <mxCell id="ds6" value="D6: Cart Storage (LocalStorage)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
           <mxGeometry x="600" y="1000" width="250" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="ds7" value="D7: Carousel Slides Collection" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+        <mxCell id="ds7" value="D7: Wishlist Storage (LocalStorage)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
           <mxGeometry x="880" y="1000" width="250" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="ds8" value="D8: Firebase Storage (Images)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+        <mxCell id="ds8" value="D8: Carousel Slides Collection" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
           <mxGeometry x="1160" y="1000" width="250" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ds9" value="D9: Firebase Storage (Images)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="320" y="1070" width="250" height="40" as="geometry"/>
         </mxCell>
         
         <!-- Customer to Processes -->
@@ -301,14 +305,14 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="f28" value="Cart Data" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process3" target="ds5">
+        <mxCell id="f28" value="Cart Data" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process3" target="ds6">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="700" y="800" as="sourcePoint"/>
             <mxPoint x="750" y="750" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="f29" value="Wishlist Data" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process4" target="ds6">
+        <mxCell id="f29" value="Wishlist Data" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process4" target="ds7">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="700" y="800" as="sourcePoint"/>
             <mxPoint x="750" y="750" as="targetPoint"/>
@@ -336,14 +340,14 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="f33" value="User CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process10" target="ds4">
+        <mxCell id="f33" value="User CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process10" target="ds5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="700" y="800" as="sourcePoint"/>
             <mxPoint x="750" y="750" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="f34" value="Carousel CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process11" target="ds7">
+        <mxCell id="f34" value="Carousel CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process11" target="ds8">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="700" y="800" as="sourcePoint"/>
             <mxPoint x="750" y="750" as="targetPoint"/>
@@ -357,7 +361,22 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="f36" value="Images" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process9" target="ds8">
+        <mxCell id="f36" value="Images" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process9" target="ds9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="800" as="sourcePoint"/>
+            <mxPoint x="750" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- NEW: Category data flows -->
+        <mxCell id="f37" value="Read Categories" style="endArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process2" target="ds4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="800" as="sourcePoint"/>
+            <mxPoint x="750" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="f38" value="Category CRUD" style="endArrow=classic;startArrow=classic;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="process9" target="ds4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="700" y="800" as="sourcePoint"/>
             <mxPoint x="750" y="750" as="targetPoint"/>

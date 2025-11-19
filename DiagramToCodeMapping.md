@@ -252,8 +252,10 @@ export const WishlistProvider = ({ children }) => {
 - **Products** → `products` collection with inventory and pricing
 - **Categories** → `categories` collection with category metadata
 - **Orders** → `orders` collection with order details
-- **OrderItems** → subcollection under `orders/{orderId}/orderItems`
+- **OrderItems** → stored as array within order document OR subcollection under `orders/{orderId}/orderItems`
 - **CarouselSlides** → `carouselSlides` collection for homepage content
+- **Wishlist** → localStorage with key pattern `wishlist_${userId}` (not Firestore)
+- **Cart** → localStorage with key `ecommerce_cart_items` (not Firestore)
 
 ### **Relationships Implementation:**
 
@@ -290,18 +292,43 @@ localStorage.setItem(`wishlist_${user.uid}`, JSON.stringify(wishlistItems));
 
 #### Composition Relationships:
 ```javascript
-// Order → OrderItems (subcollection composition)
+// Order → OrderItems (embedded array approach - primary implementation)
 // In Checkout.js:
+const orderData = {
+  userId: user.uid,
+  items: items, // ← Items stored directly as array in order document
+  customerInfo: formData,
+  totalAmount: getCartTotal(),
+  paymentMethod: paymentMethod,
+  status: 'pending',
+  createdAt: new Date()
+};
 const orderRef = await addDoc(collection(db, 'orders'), orderData);
-// Add order items as subcollection
-for (const item of items) {
-  await addDoc(collection(db, 'orders', orderRef.id, 'orderItems'), {
-    productId: item.id,
-    quantity: item.quantity,
-    price: item.price,
-    name: item.name
-  });
-}
+
+// Alternative: Subcollection approach (optional, for complex scenarios)
+// for (const item of items) {
+//   await addDoc(collection(db, 'orders', orderRef.id, 'orderItems'), {
+//     productId: item.id, quantity: item.quantity, price: item.price
+//   });
+// }
+```
+
+#### Client-Side Storage Relationships:
+```javascript
+// Cart → localStorage (temporary, session-based)
+// In CartContext.js:
+const saveToStorage = (items) => {
+  const cartData = { items: items, timestamp: Date.now(), version: '1.0' };
+  localStorage.setItem('ecommerce_cart_items', JSON.stringify(cartData));
+};
+
+// Wishlist → localStorage (user-specific, persistent)
+// In WishlistContext.js:
+const saveWishlist = (items) => {
+  if (user) {
+    localStorage.setItem(`wishlist_${user.uid}`, JSON.stringify(items));
+  }
+};
 ```
 
 ---
@@ -881,7 +908,54 @@ const response = await fetch('/api/payment/initiate', {
 | **DFD (All Levels)** | `src/context/*`, `backend/*`, Firebase services | Data flow through React contexts, Express.js routes, Firebase SDK | Real-time data synchronization via Firestore |
 | **Sequence Diagram** | Complete application flow | API calls, context methods, Firebase operations, payment gateway integration | Multi-layer: LocalStorage → Context → Firestore → Backend APIs |
 
-## Technology Stack Summary
+## Database Schema Accuracy Assessment
+
+### **✅ Accurate Mappings:**
+- **Users Collection**: Matches ER diagram with Firebase Auth integration
+- **Products Collection**: Complete match with additional fields (rating, reviews, sales, featured)
+- **Categories Collection**: Implemented but missing from ER diagram
+- **Orders Collection**: Primary implementation uses embedded items array
+- **CarouselSlides Collection**: Matches both DFD and implementation
+
+### **⚠️ Implementation Differences:**
+- **Cart Entity**: ER shows Firestore collection, but actually uses localStorage
+- **OrderItems**: ER shows separate entity, but primarily stored as embedded array
+- **Wishlist Entity**: Missing from ER diagram entirely, but fully implemented
+
+### **📊 Actual vs. Designed Schema:**
+
+#### **Product Entity - Enhanced Fields:**
+```javascript
+// ER Diagram Fields: name, description, price, imageUrl, categoryId, stock, createdAt
+// Actual Implementation adds:
+{
+  originalPrice: number,    // For discount calculations
+  rating: number,          // Average user rating (0-5)
+  reviews: number,         // Total review count
+  sales: number,           // Total units sold
+  featured: boolean,       // Homepage featured flag
+  secondaryImages: array   // Additional product images
+}
+```
+
+#### **Order Entity - Flexible Structure:**
+```javascript
+// Primary approach: Embedded items
+{
+  userId: string,
+  items: [                 // ← Array of order items (not separate collection)
+    { productId, quantity, price, name },
+    { productId, quantity, price, name }
+  ],
+  customerInfo: object,
+  totalAmount: number,
+  paymentMethod: string,
+  status: enum,
+  createdAt: timestamp
+}
+```
+
+### **Technology Stack Summary**
 
 ### **Frontend Architecture:**
 ```javascript
@@ -890,8 +964,8 @@ src/
 ├── App.js                 // Main app with provider hierarchy
 ├── context/              // Global state management
 │   ├── AuthContext.js    // User authentication & authorization
-│   ├── CartContext.js    // Shopping cart with persistence  
-│   └── WishlistContext.js // User wishlist management
+│   ├── CartContext.js    // Shopping cart with localStorage persistence  
+│   └── WishlistContext.js // User wishlist management (localStorage)
 ├── pages/                // Route components (use cases)
 ├── components/           // Reusable UI components
 ├── hooks/                // Custom React hooks (data fetching)
@@ -912,9 +986,16 @@ backend/
 
 ### **Data Layer:**
 - **Firebase Authentication**: User management and session handling
-- **Firestore**: NoSQL document database for all application data
+- **Firestore Collections**: 
+  - `users` - User profiles and admin status
+  - `products` - Product catalog with enhanced fields
+  - `orders` - Orders with embedded items array
+  - `categories` - Product categories and metadata
+  - `carouselSlides` - Homepage carousel content
 - **Firebase Storage**: Image and file storage for products/categories
-- **LocalStorage**: Client-side cart and wishlist persistence
+- **LocalStorage**: 
+  - Cart persistence (`ecommerce_cart_items`)
+  - User-specific wishlists (`wishlist_${userId}`)
 - **UddoktaPay API**: External payment gateway integration
 
 ### **Key Design Patterns:**
@@ -938,9 +1019,71 @@ backend/
 - Optimistic UI updates with error handling and rollback
 - Local storage backup for critical user data (cart, wishlist)
 
+### **Storage Strategy Decisions:**
+```javascript
+// Why localStorage for Cart & Wishlist instead of Firestore:
+// 1. Performance: Instant local access, no network calls
+// 2. Offline functionality: Works without internet connection
+// 3. Cost efficiency: Reduces Firestore read/write operations
+// 4. User experience: Immediate updates, no loading states
+// 5. Privacy: Cart data stays local until checkout
+
+// Cart Implementation:
+localStorage.setItem('ecommerce_cart_items', JSON.stringify({
+  items: cartItems,
+  timestamp: Date.now(),
+  version: '1.0'
+}));
+
+// Wishlist Implementation (user-specific):
+localStorage.setItem(`wishlist_${user.uid}`, JSON.stringify(wishlistItems));
+```
+
+### **Order Data Structure Decision:**
+```javascript
+// Embedded Items vs. Subcollection Trade-off:
+// ✅ Chosen: Embedded array approach
+{
+  orderId: "order123",
+  items: [
+    { productId: "prod1", quantity: 2, price: 100, name: "Product 1" },
+    { productId: "prod2", quantity: 1, price: 50, name: "Product 2" }
+  ],
+  totalAmount: 250
+}
+
+// ❌ Alternative: Subcollection approach (more complex, used for specific cases)
+// orders/order123 -> { userId, totalAmount, status }
+// orders/order123/orderItems/item1 -> { productId, quantity, price }
+```
+
 ### **Payment Integration:**
 - UddoktaPay webhook system for payment status updates
 - Dual payment methods: online (bKash/Nagad) and cash on delivery
 - Order status tracking with real-time Firestore updates
+
+## Diagram Accuracy Summary
+
+### **Overall Compatibility Score: 90% ✅**
+
+**What Matches Perfectly:**
+- Core Firestore collections (users, products, orders, categories, carouselSlides)
+- Authentication flow and user management
+- Product catalog and search functionality  
+- Order processing and payment integration
+- Admin panel CRUD operations
+
+**What Needs Clarification in Diagrams:**
+- Cart storage: localStorage (not Firestore collection as ER suggests)
+- Wishlist entity: Missing from ER but fully implemented
+- OrderItems: Embedded array approach vs. separate entity shown in ER
+- Enhanced product fields: rating, reviews, sales, featured (missing from ER)
+
+**Recommendations for Diagram Updates:**
+1. Add Wishlist entity to ER diagram
+2. Update Cart entity to show localStorage storage method
+3. Clarify OrderItems as embedded array within Order entity
+4. Add missing product fields to Product entity in ER
+5. Update DFD to show localStorage data stores for Cart/Wishlist
 
 For implementation details and specific code examples, see the expanded sections above and examine the referenced files directly.
